@@ -1,5 +1,16 @@
 name: build-x86-64-immortalwrt-25.12.x
-on:
+on:[push]
+# 在全局或具体 job 下配置环境变量
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      # ... 其他步骤
   workflow_dispatch:
     inputs:
       luci_version:
